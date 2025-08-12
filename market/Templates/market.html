@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block title %}Market Place {% endblock %}
+{% block content %}
+  <div class="row">
+    <div class="col-8">
+      <h2>Available items on the Market</h2>
+      <p>Click on one of the items to start purchasing</p>
+      <br>
+      <table class="table table-hover table-dark">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Barcode</th>
+            <th scope="col">Price</th>
+            <th scope="col">Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in items %}
+          {% include 'includes/modal.html' %}
+
+          <tr>
+            <td>{{ item.id.split('-')[0] }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.barcode }}</td>
+            <td>${{ item.parse_price }}</td>
+            <td>
+              <button class="btn btn-outline btn-info" data-toggle="modal" data-target="#modal_id-{{ item.id}}">More Info</button>
+              <button class="btn btn-outline btn-success" data-toggle="modal" data-target="#modal_purchase-{{ item.id }}">Buy Item</button>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="col-4">
+      <h2>Owned Items</h2>
+      <p>Click on sell item to put an item on the Market</p>
+      <br>
+            <table class="table table-hover table-dark">
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Options</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for owned in user_items %}
+                {% include 'includes/owned_modal.html' %}
+            
+                <tr>
+                  <td>{{ owned.name }}</td>
+                  <td>${{ owned.parse_price }}</td>
+                  <td>
+                    <button class="btn btn-outline btn-info" data-toggle="modal" data-target="#modal_id-{{ owned.id}}">Sell Item</button>
+                    <button class="btn btn-outline btn-success" data-toggle="modal" data-target="#modal_edit-{{ owned.id }}">Edit</button>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+    </div>
+  </div>
+{% endblock %}

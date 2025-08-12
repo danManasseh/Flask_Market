@@ -1,0 +1,42 @@
+# Python cache and build files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+.env
+
+# Environment & config files
+*.env
+.env.*
+instance/
+config.py
+
+# IDE/editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs & runtime files
+*.log
+*.pot
+*.pyc
+*.sqlite3
+*.db
+*.pid
+
+# Mac & system files
+.DS_Store
+Thumbs.db
