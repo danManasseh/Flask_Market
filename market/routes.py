@@ -91,6 +91,7 @@ def login():
             flash(f'There was an error with the login:{errs}', category='danger')
     return render_template('login.html', form = form)
 
+
 @app.route('/logout')
 def logout():
     logout_user()
